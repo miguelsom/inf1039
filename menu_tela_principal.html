@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descubra Sua Próxima Disciplina</title>
+    <title>Grade Guru • Encontre sua próxima disciplina</title>
     <style>
         :root {
             --primary-color: #ffd54f;
@@ -27,9 +27,19 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
+            font-size: 2.2rem;
+            font-weight: 700;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
             color: var(--text-color);
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: transform 0.2s ease;
+        }
+        .logo:hover {
+            transform: translateY(-1px);
         }
         .user-info {
             display: flex;
@@ -62,6 +72,14 @@
             padding: 2rem 1rem;
             max-width: 1100px;
             margin: 0 auto;
+        }
+        .page-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
         }
         .search-bar {
             margin-bottom: 2rem;
@@ -123,6 +141,8 @@
     </header>
 
     <div class="container">
+        <h1 class="page-title">Descubra sua próxima disciplina</h1>
+
         <div class="search-bar">
             <input type="text" placeholder="🔎 Buscar disciplina...">
         </div>
