@@ -1,252 +1,41 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GradGuru • Disciplina</title>
-  <style>
-    :root {
-      --primary-color: #ffd54f;
-      --background-color: #fff8e1;
-      --accent-color: #ffb300;
-      --text-color: #5d4037;
-      --secondary-text: #757575;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      background-color: var(--background-color);
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: var(--primary-color);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .logo {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--text-color);
-    }
-    .user-info {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .user-info img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-    }
-    .container {
-      padding: 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .disciplina-header {
-      background-color: #fff;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      margin-bottom: 2rem;
-    }
-    .disciplina-header h1 {
-      font-size: 1.8rem;
-      color: var(--text-color);
-    }
-    .disciplina-header p {
-      color: var(--secondary-text);
-    }
-    .disciplina-header a {
-      text-decoration: none;
-      color: var(--text-color);
-      font-weight: bold;
-    }
-    .section {
-      background: #fff;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-    .section h2 {
-      font-size: 1.4rem;
-      margin-bottom: 0.8rem;
-      color: var(--text-color);
-    }
-    .section h3 {
-      color: var(--text-color);
-    }
-    .section p, .section a {
-      color: var(--secondary-text);
-      line-height: 1.6;
-    }
-    .resumo-box {
-      background-color: #fefefe;
-      padding: 1rem;
-      border-left: 4px solid var(--accent-color);
-      border-radius: 8px;
-      margin-top: 1rem;
-    }
-    .avaliacoes-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 1.5rem;
-    }
-    .avaliacao {
-      background-color: #fff8e1;
-      padding: 1rem;
-      border: 1px solid #ffe082;
-      border-radius: 10px;
-      margin-top: 0.8rem;
-    }
-    .avaliacao p {
-      margin: 0.3rem 0;
-    }
-    .avaliacao .botoes {
-      margin-top: 0.5rem;
-    }
-    .avaliacao .botoes button {
-      margin-right: 10px;
-      padding: 0.4rem 0.8rem;
-      background-color: var(--accent-color);
-      border: none;
-      border-radius: 20px;
-      color: white;
-      cursor: pointer;
-      font-size: 0.9rem;
-    }
-    .avaliacao .botoes button:hover {
-      background-color: #ffa000;
-    }
-    .materiais-lista {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      margin-top: 1rem;
-    }
-    .arquivo {
-      background: #f9fbe7;
-      padding: 0.8rem;
-      border-radius: 8px;
-      border-left: 4px solid #cddc39;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .arquivo a {
-      text-decoration: none;
-      color: var(--text-color);
-    }
-    .adicionar-arquivo {
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: #aed581;
-      border: none;
-      border-radius: 8px;
-      color: #263238;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .adicionar-arquivo:hover {
-      background-color: #9ccc65;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="logo">Grade Guru</div>
-    <div class="user-info">
-      <img src="https://via.placeholder.com/40" alt="User"/>
-      <span>Olá, João!</span>
-    </div>
-  </header>
+{% extends "base.html" %}
+{% block title %}GradGuru • Disciplina{% endblock %}
 
-  <div class="container">
-    <div class="disciplina-header">
-      <h1>Engenharia de Software I</h1>
-      <p><strong>Professores:</strong>
-        <a href="#">Maria Silva</a> • 
-        <a href="#">Carlos Moura</a> • 
-        <a href="#">Ana Paula Rocha</a>
-      </p>
-      <p><strong>Créditos:</strong> 4</p>
-    </div>
-	
+{% block content %}
+<section class="section">
+  <h1 class="page-title">Engenharia de Software I</h1>
+  <p><strong>Professores:</strong> Maria Silva, Carlos Moura, Ana Paula Rocha</p>
+  <p><strong>Créditos:</strong> 4</p>
+</section>
 
-    <div class="section">
-      <h2>Resumo da Disciplina</h2>
-      <div class="resumo-box">
-        <p>Fundamentos do desenvolvimento de software com foco em métodos ágeis, modelagem UML e testes automatizados. Cada professor aplica projetos e metodologias distintas, enriquecendo o aprendizado de formas complementares.</p>
-      </div>
-    </div>
+<section class="section">
+  <h2>Resumo</h2>
+  <p>Foco em métodos ágeis, modelagem UML e testes automatizados. Cada professor aplica projetos e metodologias distintas, enriquecendo o aprendizado de formas complementares.</p>
+</section>
 
-    <div class="section">
-      <h2>Avaliações da Disciplina</h2>
+<section class="section">
+  <h2>Avaliações</h2>
 
-      <div class="avaliacoes-header">
-        <h3>Maria Silva (2 avaliações)</h3>
-        <button class="adicionar-arquivo">+ Avaliar Maria Silva</button>
-      </div>
-      <div class="avaliacao">
-        <p><strong>Nota:</strong> 4.5 / 5 ⭐</p>
-        <p><strong>Comentário:</strong> Ótima explicação teórica e bons projetos em grupo.</p>
-        <p><strong>Curtidas:</strong> 👍 15</p>
-        <div class="botoes">
-          <button>Curtir</button>
-        </div>
-      </div>
-      <div class="avaliacao">
-        <p><strong>Nota:</strong> 5 / 5 ⭐</p>
-        <p><strong>Comentário:</strong> Dinâmica, atualizada e muito atenciosa!</p>
-        <p><strong>Curtidas:</strong> 👍 9</p>
-        <div class="botoes">
-          <button>Curtir</button>
-        </div>
-      </div>
-
-      <div class="avaliacoes-header">
-        <h3>Carlos Moura (1 avaliação)</h3>
-        <button class="adicionar-arquivo">+ Avaliar Carlos Moura</button>
-      </div>
-      <div class="avaliacao">
-        <p><strong>Nota:</strong> 3.5 / 5 ⭐</p>
-        <p><strong>Comentário:</strong> Muita leitura e poucos exemplos práticos, mas domina o conteúdo.</p>
-        <p><strong>Curtidas:</strong> 👍 6</p>
-        <div class="botoes">
-          <button>Curtir</button>
-        </div>
-      </div>
-
-      <div class="avaliacoes-header">
-        <h3>Ana Paula Rocha (0 avaliações)</h3>
-        <button class="adicionar-arquivo">+ Avaliar Ana Paula Rocha</button>
-      </div>
-      <p style="color: var(--secondary-text); margin-left: 1rem;">Nenhuma avaliação ainda.</p>
-    </div>
-
-    <div class="section">
-      <h2>Materiais Complementares</h2>
-      <div class="materiais-lista">
-        <div class="arquivo">
-          <a href="#">📄 Apostila Oficial</a>
-          <span>📥</span>
-        </div>
-        <div class="arquivo">
-          <a href="#">🔗 Grupo de Discussão</a>
-          <span>👥</span>
-        </div>
-        <div class="arquivo">
-          <a href="#">📁 Repositório GitHub</a>
-          <span>💾</span>
-        </div>
-      </div>
-      <button class="adicionar-arquivo">+ Adicionar Arquivo</button>
-    </div>
+  <div class="avaliacao">
+    <strong>Maria Silva</strong> — Nota: 4.5 ⭐
+    <p>Ótima explicação teórica e bons projetos em grupo.</p>
+    <button class="curtir">Curtir</button>
   </div>
-</body>
-</html>
+
+  <div class="avaliacao">
+    <strong>Carlos Moura</strong> — Nota: 3.5 ⭐
+    <p>Muita leitura e poucos exemplos práticos, mas domina o conteúdo.</p>
+    <button class="curtir">Curtir</button>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Materiais</h2>
+  <ul>
+    <li><a href="#">📄 Apostila Oficial</a></li>
+    <li><a href="#">🔗 Grupo de Discussão</a></li>
+    <li><a href="#">📁 Repositório GitHub</a></li>
+  </ul>
+  <button class="adicionar-arquivo">+ Adicionar Arquivo</button>
+</section>
+{% endblock %}

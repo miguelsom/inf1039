@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}GradGuru{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="{% static 'logo.png' %}" alt="GradGuru Logo" />
+      <span>GradGuru</span>
+    </div>
+    <div class="user-info">
+      <img src="{% static 'user.png' %}" alt="Foto do usuário" />
+      <span>Olá, {{ username }}!</span>
+    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
