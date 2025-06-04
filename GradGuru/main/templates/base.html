@@ -14,9 +14,16 @@
       <img src="{% static 'logo.png' %}" alt="GradGuru Logo" />
       <span>GradGuru</span>
     </div>
-    <div class="user-info">
-      <img src="{% static 'user.png' %}" alt="Foto do usuário" />
-      <span>Olá, {{ username }}!</span>
+    <div class="user-auth">
+      {% if request.user.is_authenticated %}
+      Hello, {{ request.user.first_name }}!
+      <form method="post" action="{% url 'account:logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+      </form>
+      {% else %}
+      <a href="{% url 'account:login' %}">Login</a>
+      {% endif %}
     </div>
   </header>
 
