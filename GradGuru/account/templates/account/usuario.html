@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Perfil do Usuário{% endblock %}
+
+{% block content %}
+  <section class="section">
+    <h2>Informações do Usuário</h2>
+    <ul class="user-details">
+      <li><strong>Nome:</strong> {{ username }}</li>
+      <li><strong>Matrícula:</strong> {{ matricula }}</li>
+      <li><strong>Curso:</strong> {{ curso }}</li>
+      <li><strong>Email:</strong> {{ email }}</li>
+    </ul>
+    <div class="logout-container">
+      <a href="/login/" class="logout-button-red">Sair</a>
+    </div>
+  </section>
+{% endblock %}
