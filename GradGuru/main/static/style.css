@@ -222,3 +222,215 @@ main.container {
 .adicionar-arquivo:hover {
   background-color: var(--accent-dark);
 }
+
+/* Layout da página de disciplinas */
+.disciplinas-wrapper {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2rem;
+  align-items: start;
+  
+}
+
+/* Filtros laterais */
+.filtros {
+  background-color: var(--white);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  font-size: 0.95rem;
+}
+
+.filtros h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.filtro-box {
+  margin-bottom: 1.5rem;
+}
+
+.filtro-box label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.filtro-box select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+/* Barra de busca pequena */
+.search-bar.search-pequena {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 0 1rem 0;
+}
+
+.search-bar.search-pequena input {
+  width: 280px;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--accent);
+}
+
+/* Tabela de disciplinas */
+.section.no-padding {
+  padding: 0;
+  background-color: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+}
+
+.disciplinas-tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.disciplinas-tabela thead {
+  background-color: #f8f6f4;
+}
+
+.disciplinas-tabela th,
+.disciplinas-tabela td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.disciplinas-tabela a {
+  color: var(--accent-dark);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.disciplinas-tabela a:hover {
+  text-decoration: underline;
+}
+
+.disciplinas-tabela tr:hover {
+  background-color: #faf9f7;
+}
+
+.botao-aplicar {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s ease;
+}
+
+.botao-aplicar:hover {
+  background-color: var(--accent-dark);
+}
+
+.disciplinas-wrapper {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 0.5rem;
+}
+
+.filtros {
+  background-color: var(--white);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.filtros h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.filtro-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.filtro-box label {
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.filtro-box select {
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  background-color: #fff;
+}
+
+.filtro-box input[type="radio"] {
+  margin-right: 0.5rem;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.filtro-box label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+}
+
+.botao-aplicar {
+  padding: 0.6rem;
+  border: none;
+  background-color: var(--accent);
+  color: white;
+  font-weight: bold;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.botao-aplicar:hover {
+  background-color: var(--accent-dark);
+}
+
+.search-bar.search-pequena {
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.search-bar.search-pequena input {
+  width: 300px;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--accent);
+}
+
+/* Garantir que os filtros fiquem sempre visíveis */
+.disciplinas-wrapper {
+  align-items: flex-start;
+}
+
+/* Faz a caixa de filtro se ajustar à tela */
+.filtros {
+  position: sticky;
+  top: 100px; /* abaixo do header */
+  max-height: calc(100vh - 120px); /* evitar que estoure a tela */
+  overflow-y: auto;
+}
