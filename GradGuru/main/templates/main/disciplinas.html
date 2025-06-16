@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}GradGuru • Disciplinas{% endblock %}
+
+{% block content %}
+<h1 class="page-title">Disciplinas</h1>
+
+<div class="disciplinas-wrapper">
+  <!-- Filtros Laterais -->
+  <aside class="filtros">
+    <h3>Filtrar por</h3>
+
+    <div class="filtro-box">
+      <label><strong>Tipo:</strong></label>
+      <label><input type="radio" name="tipo" class="filtro" data-col="tipo" value=""> Todas</label>
+      <label><input type="radio" name="tipo" class="filtro" data-col="tipo" value="Obrigatória"> Obrigatória</label>
+      <label><input type="radio" name="tipo" class="filtro" data-col="tipo" value="Eletiva"> Eletiva</label>
+    </div>
+
+    <div class="filtro-box">
+      <label for="graduacao"><strong>Graduação:</strong></label>
+      <select id="graduacao" class="filtro" data-col="graduacao">
+        <option value="">Todas</option>
+        <option value="Engenharia">Engenharia</option>
+        <option value="Computação">Computação</option>
+      </select>
+    </div>
+
+    <div class="filtro-box">
+      <label for="departamento"><strong>Departamento:</strong></label>
+      <select id="departamento" class="filtro" data-col="departamento">
+        <option value="">Todos</option>
+        <option value="Informática">Informática</option>
+        <option value="Matemática">Matemática</option>
+      </select>
+    </div>
+
+    <button class="botao-aplicar" onclick="aplicarFiltros()">Aplicar Filtros</button>
+  </aside>
+
+  <!-- Conteúdo Principal -->
+  <section class="disciplinas-conteudo">
+    <div class="search-bar search-pequena">
+      <input type="text" id="search" placeholder="🔍 Buscar disciplina..." />
+    </div>
+
+    <div class="section no-padding">
+      <table class="disciplinas-tabela">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Departamento</th>
+            <th>Graduação</th>
+            <th>Tipo</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="disciplinas-tabela">
+          <tr data-codigo="INF1010" data-nome="Algoritmos" data-departamento="Informática" data-graduacao="Engenharia" data-tipo="Obrigatória">
+            <td>INF1010</td>
+            <td>Algoritmos</td>
+            <td>Informática</td>
+            <td>Engenharia</td>
+            <td>Obrigatória</td>
+            <td><a href="/disciplina/algoritmos/">Ver</a></td>
+          </tr>
+          <tr data-codigo="INF2020" data-nome="Design de Interfaces" data-departamento="Informática" data-graduacao="Computação" data-tipo="Eletiva">
+            <td>INF2020</td>
+            <td>Design de Interfaces</td>
+            <td>Informática</td>
+            <td>Computação</td>
+            <td>Eletiva</td>
+            <td><a href="/disciplina/interfaces/">Ver</a></td>
+          </tr>
+          <tr data-codigo="MAT1001" data-nome="Cálculo I" data-departamento="Matemática" data-graduacao="Engenharia" data-tipo="Obrigatória">
+            <td>MAT1001</td>
+            <td>Cálculo I</td>
+            <td>Matemática</td>
+            <td>Engenharia</td>
+            <td>Obrigatória</td>
+            <td><a href="/disciplina/calculo1/">Ver</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<script>
+  function aplicarFiltros() {
+    const busca = document.getElementById('search').value.trim().toLowerCase();
+    const tipoSelecionado = document.querySelector('input[name="tipo"]:checked')?.value.trim().toLowerCase() || "";
+
+    const graduacao = document.getElementById('graduacao').value.trim().toLowerCase();
+    const departamento = document.getElementById('departamento').value.trim().toLowerCase();
+
+    const linhas = document.querySelectorAll('#disciplinas-tabela tr');
+
+    linhas.forEach(row => {
+      const texto = row.innerText.toLowerCase();
+      let mostrar = texto.includes(busca);
+
+      const tipo = (row.dataset.tipo || "").trim().toLowerCase();
+      const grad = (row.dataset.graduacao || "").trim().toLowerCase();
+      const dept = (row.dataset.departamento || "").trim().toLowerCase();
+
+      if (tipoSelecionado && tipo !== tipoSelecionado) mostrar = false;
+      if (graduacao && grad !== graduacao) mostrar = false;
+      if (departamento && dept !== departamento) mostrar = false;
+
+      row.style.display = mostrar ? "" : "none";
+    });
+  }
+
+  document.getElementById('search').addEventListener('input', aplicarFiltros);
+</script>
+{% endblock %}
