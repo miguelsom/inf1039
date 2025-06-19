@@ -3,8 +3,6 @@
 {% block title %}GradGuru • Disciplinas{% endblock %}
 
 {% block content %}
-<h1 class="page-title">Disciplinas</h1>
-
 <div class="disciplinas-wrapper">
   <!-- Filtros Laterais -->
   <aside class="filtros">
@@ -91,7 +89,6 @@
   function aplicarFiltros() {
     const busca = document.getElementById('search').value.trim().toLowerCase();
     const tipoSelecionado = document.querySelector('input[name="tipo"]:checked')?.value.trim().toLowerCase() || "";
-
     const graduacao = document.getElementById('graduacao').value.trim().toLowerCase();
     const departamento = document.getElementById('departamento').value.trim().toLowerCase();
 
@@ -114,5 +111,37 @@
   }
 
   document.getElementById('search').addEventListener('input', aplicarFiltros);
+
+  // ================================
+  // Aplicar filtros com base na URL
+  // ================================
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+
+    // Pré-seleciona radio de tipo
+    const tipo = params.get('tipo');
+    if (tipo) {
+      const radio = document.querySelector(`input[name="tipo"][value="${tipo}"]`);
+      if (radio) radio.checked = true;
+    }
+
+    // Pré-seleciona graduação
+    const graduacao = params.get('graduacao');
+    if (graduacao) {
+      const select = document.getElementById('graduacao');
+      if (select) select.value = graduacao;
+    }
+
+    // Pré-seleciona departamento
+    const departamento = params.get('departamento');
+    if (departamento) {
+      const select = document.getElementById('departamento');
+      if (select) select.value = departamento;
+    }
+
+    // Aplica os filtros
+    aplicarFiltros();
+  });
 </script>
+
 {% endblock %}

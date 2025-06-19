@@ -10,10 +10,10 @@
 </head>
 <body>
   <header>
-    <div class="logo">
+    <a href="{% url 'main:main_page' %}" class="logo" style="text-decoration: none; color: inherit;">
       <img src="{% static 'logo.png' %}" alt="GradGuru Logo" />
       <span>GradGuru</span>
-    </div>
+    </a>
     <div class="user-auth">
       {% if request.user.is_authenticated %}
       Hello, {{ request.user.first_name }}!

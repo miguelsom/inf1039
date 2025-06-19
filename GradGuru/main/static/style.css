@@ -434,3 +434,12 @@ main.container {
   max-height: calc(100vh - 120px); /* evitar que estoure a tela */
   overflow-y: auto;
 }
+.card-link {
+  all: unset;
+  display: block;
+  cursor: pointer;
+}
+.card-link * {
+  color: inherit;
+  text-decoration: none;
+}
