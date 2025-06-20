@@ -34,7 +34,6 @@
     </div>
 
     <button class="botao-aplicar" onclick="aplicarFiltros()">Aplicar Filtros</button>
-    <button class="botao-limpar" onclick="limparFiltros()">Limpar Filtros</button>
   </aside>
 
   <!-- Conteúdo Principal -->
@@ -64,7 +63,7 @@
             <td>{{ d.departamento }}</td>
             <td>{{ d.graduacao }}</td>
             <td>{{ d.tipo }}</td>
-            <td><a href="/disciplina/{{ d.codigo|lower }}/">Ver</a></td>
+            <td><a href="{% url 'disciplinas:pag_disciplina' d.codigo|lower %}">Ver</a></td>
           </tr>
           {% endfor %}
         </tbody>
@@ -72,21 +71,6 @@
     </div>
   </section>
 </div>
-
-<style>
-  .botao-limpar {
-    margin-top: 10px;
-    background-color: transparent;
-    border: 1px solid #ccc;
-    padding: 6px 10px;
-    cursor: pointer;
-    font-size: 0.9rem;
-  }
-
-  .botao-limpar:hover {
-    background-color: #f0f0f0;
-  }
-</style>
 
 <script>
   function aplicarFiltros() {
@@ -113,15 +97,6 @@
     });
   }
 
-  function limparFiltros() {
-    document.getElementById('search').value = '';
-    document.querySelectorAll('input[name="tipo"]').forEach(r => r.checked = false);
-    document.getElementById('graduacao').value = '';
-    document.getElementById('departamento').value = '';
-    history.replaceState(null, "", window.location.pathname);
-    aplicarFiltros();
-  }
-
   document.getElementById('search').addEventListener('input', aplicarFiltros);
 
   window.addEventListener('DOMContentLoaded', () => {
@@ -146,14 +121,6 @@
     }
 
     aplicarFiltros();
-
-    // Se o filtro for alterado, limpar a URL
-    const filtros = document.querySelectorAll('.filtro');
-    filtros.forEach(f => {
-      f.addEventListener('change', () => {
-        history.replaceState(null, "", window.location.pathname);
-      });
-    });
   });
 </script>
 

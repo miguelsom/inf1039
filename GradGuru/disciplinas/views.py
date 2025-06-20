@@ -6,5 +6,5 @@ def lista_disciplinas(request):
     return render(request, 'disciplinas.html', {'disciplinas': disciplinas})
 
 def pag_disciplina(request, codigo):
-    disciplina = get_object_or_404(Disciplina, codigo__iexact=codigo)
+    disciplina = get_object_or_404(Disciplina, codigo=codigo.upper())
     return render(request, 'pag_disciplina.html', {'disciplina': disciplina})

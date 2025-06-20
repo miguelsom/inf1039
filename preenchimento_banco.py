@@ -9,34 +9,32 @@ conn = psycopg2.connect(
     port="5432"
 )
 
-# Dados a inserir
+# Dados a inserir (com breve descrição + créditos)
 disciplinas = [
-    ("INF1010", "Algoritmos", "Informática", "Engenharia", "Obrigatória"),
-    ("INF2020", "Design de Interfaces", "Informática", "Computação", "Eletiva"),
-    ("MAT1001", "Cálculo I", "Matemática", "Engenharia", "Obrigatória")
+    ("INF1010", "Algoritmos", "Informática", "Engenharia", "Obrigatória", "", "Introdução à lógica de programação e estruturas de controle.", 4),
+    ("INF2020", "Design de Interfaces", "Informática", "Computação", "Eletiva", "", "Estudo de usabilidade, acessibilidade e design visual.", 3),
+    ("MAT1001", "Cálculo I", "Matemática", "Engenharia", "Obrigatória", "", "Conceitos fundamentais de derivadas e integrais.", 5)
 ]
 
 # Executar inserts ou updates
-disciplinas = [
-    ("INF1010", "Algoritmos", "Informática", "Engenharia", "Obrigatória", ""),
-    ("INF2020", "Design de Interfaces", "Informática", "Computação", "Eletiva", ""),
-    ("MAT1001", "Cálculo I", "Matemática", "Engenharia", "Obrigatória", "")
-]
-
 with conn:
     with conn.cursor() as cur:
-        for cod, nome, depto, grad, tipo, materiais in disciplinas:
+        for cod, nome, depto, grad, tipo, materiais, breve_desc, creditos in disciplinas:
             cur.execute("""
-                INSERT INTO disciplinas_disciplina (codigo, nome, departamento, graduacao, tipo, materiais)
-                VALUES (%s, %s, %s, %s, %s, %s)
+                INSERT INTO disciplinas_disciplina (
+                    codigo, nome, departamento, graduacao, tipo,
+                    materiais, breve_descricao, creditos
+                )
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                 ON CONFLICT (codigo) DO UPDATE
                 SET nome = EXCLUDED.nome,
                     departamento = EXCLUDED.departamento,
                     graduacao = EXCLUDED.graduacao,
                     tipo = EXCLUDED.tipo,
-                    materiais = EXCLUDED.materiais;
-            """, (cod, nome, depto, grad, tipo, materiais))
-
+                    materiais = EXCLUDED.materiais,
+                    breve_descricao = EXCLUDED.breve_descricao,
+                    creditos = EXCLUDED.creditos;
+            """, (cod, nome, depto, grad, tipo, materiais, breve_desc, creditos))
 
 print("✅ Disciplinas inseridas ou atualizadas com sucesso!")
 conn.close()
