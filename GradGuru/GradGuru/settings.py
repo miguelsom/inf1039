@@ -59,7 +59,7 @@ ROOT_URLCONF = "GradGuru.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        'DIRS': [BASE_DIR / 'templates'],  # Se você usar templates fora dos apps
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -136,3 +136,5 @@ LOGIN_URL = 'account:login'
 LOGOUT_URL = 'account:logout'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+

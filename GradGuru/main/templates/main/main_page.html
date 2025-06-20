@@ -5,26 +5,28 @@
 <h1 class="page-title">Descubra sua próxima disciplina</h1>
 
 <div class="sections">
-  <a href="{% url 'main:disciplinas' %}" class="card-link">
+  <!-- Link para todas as disciplinas -->
+  <a href="{% url 'disciplinas:lista_disciplinas' %}" class="card-link" style="text-decoration: none; color: inherit;">
     <div class="section-card">
       <h3>Avaliar Disciplina</h3>
       <p>Deixe sua opinião e ajude outros alunos!</p>
     </div>
   </a>
 
-  <a href="{% url 'main:disciplinas' %}?tipo=Obrigatória" class="card-link">
+  <!-- Link para disciplinas obrigatórias -->
+  <a href="{% url 'disciplinas:lista_disciplinas' %}?tipo=Obrigatória" class="card-link" style="text-decoration: none; color: inherit;">
     <div class="section-card">
       <h3>Disciplinas de Graduação</h3>
       <p>Veja avaliações das matérias obrigatórias.</p>
     </div>
   </a>
 
-  <a href="{% url 'main:disciplinas' %}?tipo=Eletiva" class="card-link">
+  <!-- Link para disciplinas eletivas -->
+  <a href="{% url 'disciplinas:lista_disciplinas' %}?tipo=Eletiva" class="card-link" style="text-decoration: none; color: inherit;">
     <div class="section-card">
       <h3>Disciplinas Eletivas</h3>
       <p>Explore matérias optativas e escolha melhor.</p>
     </div>
   </a>
 </div>
-
 {% endblock %}

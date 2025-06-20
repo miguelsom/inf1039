@@ -5,6 +5,12 @@ class Disciplina(models.Model):
     codigo = models.CharField(primary_key=True, max_length=20)
     nome = models.CharField(max_length=100)
     departamento = models.CharField(max_length=100)
+    graduacao = models.CharField(max_length=100, blank=True, null=True)
+    tipo = models.CharField(max_length=20, choices=[
+        ("Obrigatória", "Obrigatória"),
+        ("Eletiva", "Eletiva")
+    ], blank=True, null=True)
+
     materiais = models.TextField(blank=True)
     professores = models.ManyToManyField(
         Profile,
