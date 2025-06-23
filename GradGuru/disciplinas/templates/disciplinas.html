@@ -63,7 +63,10 @@
             <td>{{ d.departamento }}</td>
             <td>{{ d.graduacao }}</td>
             <td>{{ d.tipo }}</td>
-            <td><a href="{% url 'disciplinas:pag_disciplina' d.codigo|lower %}">Ver</a></td>
+            <td>
+              <a href="{% url 'disciplinas:pag_disciplina' d.codigo|lower %}">Ver</a>
+              <span class="heart" onclick="toggleHeart(this)">&#10084;</span>
+            </td>
           </tr>
           {% endfor %}
         </tbody>
@@ -72,6 +75,23 @@
   </section>
 </div>
 
+<!-- CSS do coração -->
+<style>
+  .heart {
+    font-size: 20px;
+    color: #ccc; /* cinza claro por padrão */
+    cursor: pointer;
+    margin-left: 8px; /* espaço do link "Ver" */
+    transition: color 0.3s;
+    user-select: none;
+  }
+
+  .heart.liked {
+    color: red; /* vermelho quando curtido */
+  }
+</style>
+
+<!-- Scripts -->
 <script>
   function aplicarFiltros() {
     const busca = document.getElementById('search').value.trim().toLowerCase();
@@ -122,6 +142,11 @@
 
     aplicarFiltros();
   });
+
+  // Script do coração
+  function toggleHeart(element) {
+    element.classList.toggle('liked');
+  }
 </script>
 
 {% endblock %}
