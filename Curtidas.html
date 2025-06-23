@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}GradGuru • Disciplina{% endblock %}
+
+{% block content %}
+<section class="section">
+  <h1 class="page-title">{{ disciplina.nome }}</h1>
+  <p><strong>Professores:</strong> Maria Silva, Carlos Moura, Ana Paula Rocha</p>
+  <p><strong>Créditos:</strong> {{ disciplina.creditos }}</p>
+</section>
+
+<section class="section">
+  <h2>Resumo</h2>
+  <p>Foco em métodos ágeis, modelagem UML e testes automatizados. Cada professor aplica projetos e metodologias distintas, enriquecendo o aprendizado de formas complementares.</p>
+</section>
+
+<section class="section">
+  <h2>Avaliações</h2>
+
+  <div class="avaliacao">
+    <strong>Maria Silva</strong> — Nota: 4.5 ⭐
+    <p>Ótima explicação teórica e bons projetos em grupo.</p>
+    <span class="heart" onclick="toggleHeart(this)">&#10084;</span>
+    <span class="count">0</span>
+  </div>
+
+  <div class="avaliacao">
+    <strong>Carlos Moura</strong> — Nota: 3.5 ⭐
+    <p>Muita leitura e poucos exemplos práticos, mas domina o conteúdo.</p>
+    <span class="heart" onclick="toggleHeart(this)">&#10084;</span>
+    <span class="count">0</span>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Materiais</h2>
+  <ul>
+    <li><a href="#">📄 Apostila Oficial</a></li>
+    <li><a href="#">🔗 Grupo de Discussão</a></li>
+    <li><a href="#">📁 Repositório GitHub</a></li>
+  </ul>
+  <button class="adicionar-arquivo">+ Adicionar Arquivo</button>
+</section>
+
+<!-- CSS do coração -->
+<style>
+  .heart {
+    font-size: 24px;
+    color: #ccc;
+    cursor: pointer;
+    margin-left: 8px;
+    transition: color 0.3s;
+    user-select: none;
+  }
+
+  .heart.liked {
+    color: red;
+  }
+
+  .count {
+    margin-left: 4px;
+    font-weight: bold;
+  }
+</style>
+
+<!-- JS do coração + contador -->
+<script>
+  function toggleHeart(element) {
+    const countSpan = element.nextElementSibling; // o <span> do número
+    let count = parseInt(countSpan.innerText);
+
+    if (element.classList.contains('liked')) {
+      element.classList.remove('liked');
+      count = Math.max(0, count - 1); // garante que não fica negativo
+    } else {
+      element.classList.add('liked');
+      count += 1;
+    }
+
+    countSpan.innerText = count;
+  }
+</script>
+
+{% endblock %}
