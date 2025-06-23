@@ -19,13 +19,13 @@
   <div class="avaliacao">
     <strong>Maria Silva</strong> — Nota: 4.5 ⭐
     <p>Ótima explicação teórica e bons projetos em grupo.</p>
-    <button class="curtir">Curtir</button>
+    <span class="heart" onclick="toggleHeart(this)">&#10084;</span>
   </div>
 
   <div class="avaliacao">
     <strong>Carlos Moura</strong> — Nota: 3.5 ⭐
     <p>Muita leitura e poucos exemplos práticos, mas domina o conteúdo.</p>
-    <button class="curtir">Curtir</button>
+    <span class="heart" onclick="toggleHeart(this)">&#10084;</span>
   </div>
 </section>
 
@@ -38,4 +38,28 @@
   </ul>
   <button class="adicionar-arquivo">+ Adicionar Arquivo</button>
 </section>
+
+<!-- CSS do coração -->
+<style>
+  .heart {
+    font-size: 24px;
+    color: #ccc; /* cor padrão: cinza claro */
+    cursor: pointer;
+    margin-left: 8px;
+    transition: color 0.3s;
+    user-select: none;
+  }
+
+  .heart.liked {
+    color: red; /* vermelho quando curtido */
+  }
+</style>
+
+<!-- JS do coração -->
+<script>
+  function toggleHeart(element) {
+    element.classList.toggle('liked');
+  }
+</script>
+
 {% endblock %}
