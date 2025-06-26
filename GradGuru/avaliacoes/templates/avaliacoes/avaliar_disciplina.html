@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Avaliar {{ disciplina.nome }} • GradGuru{% endblock %}
+
+{% block content %}
+<section class="section">
+  <h1 class="page-title">Avaliar {{ disciplina.nome }}</h1>
+  <form method="post">
+    {% csrf_token %}
+    <div style="margin-bottom: 1.5rem;">
+      <label for="id_avaliacao"><strong>Sua avaliação:</strong></label><br>
+      {{ form.avaliacao }}
+      {% if form.avaliacao.errors %}
+        <div class="error">{{ form.avaliacao.errors }}</div>
+      {% endif %}
+    </div>
+    <div style="margin-bottom: 1.5rem;">
+      <label for="id_pontuacao"><strong>Pontuação (0 a 5):</strong></label><br>
+      {{ form.pontuacao }}
+      {% if form.pontuacao.errors %}
+        <div class="error">{{ form.pontuacao.errors }}</div>
+      {% endif %}
+    </div>
+    <button type="submit" class="adicionar-arquivo">Enviar Avaliação</button>
+  </form>
+</section>
+{% endblock %}
