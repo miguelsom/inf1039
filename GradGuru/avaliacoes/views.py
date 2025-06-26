@@ -15,7 +15,7 @@ def listar_avaliacoes_disciplina(request, codigo):
     avaliacoes = AvaliacaoDisciplina.objects.filter(disciplina=disciplina)
     data = [
         {
-            'aluno': str(avaliacao.aluno),
+            'aluno': avaliacao.aluno.user.username,
             'pontuacao': avaliacao.pontuacao,
             'avaliacao': avaliacao.avaliacao,
             'data': avaliacao.data.strftime('%d/%m/%Y %H:%M'),
