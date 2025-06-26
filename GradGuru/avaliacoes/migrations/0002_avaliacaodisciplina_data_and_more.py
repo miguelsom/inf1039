@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
             model_name="avaliacaodisciplina",
             name="pontuacao",
             field=models.IntegerField(
-                default=django.utils.timezone.now,
+                default=5,
                 help_text="Pontuação de 0 a 5",
                 validators=[
                     django.core.validators.MinValueValidator(0),
